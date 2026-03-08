@@ -1,0 +1,5 @@
+historical_data.csv
+model.pkl
+*.pkl
+__pycache__/
+*.pyc

@@ -270,10 +270,9 @@ def main():
     x = races_df.drop(columns=['Position', 'ClassifiedPosition', 'Finished'])
 
     # Train/test split
-    #x_train = x[(x['Year'] == 2025) & (x['Round'] < 4)]
-    # Only train on 2025 data for now
-    x_train = x[x['Year'] == 2025]
-    x_test  = x[(x['Year'] == 2026) & (x['Round'] >= 1)]
+    # Train on 2025 and the first round of 2026 data
+    x_train = x[(x['Year'] == 2025) | ((x['Year'] == 2026) & (x['Round'] < 2))]
+    x_test = x[(x['Year'] == 2026) & (x['Round'] >= 2)]
     y_train = y.loc[x_train.index]
     y_test  = y.loc[x_test.index]
 
